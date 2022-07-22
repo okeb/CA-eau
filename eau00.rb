@@ -57,7 +57,3 @@ puts list
 # -------------
 
 
-# data
-dico = []
-
-
