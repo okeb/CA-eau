@@ -46,6 +46,7 @@ end
 
 # LES DATA
 # -------------
+# char = ARGV[0].tr("\r\n", '!')
 char = ARGV[0]
 # -------------
 
