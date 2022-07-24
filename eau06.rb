@@ -38,7 +38,7 @@ char = ARGV[0].tr("\r\n", '!')
 result = []
 (0..char.length).each do |l|
   if l.even?
-    result.append(capitalize_step char[l])
+    result.append(capitalize_step(char[l]))
   else
     result.append char[l]
   end
