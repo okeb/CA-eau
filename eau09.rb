@@ -8,21 +8,24 @@ def is_numeric char
   char.match(/\A[+-]?\d+?(_?\d+)*(\.\d+e?\d*)?\Z/) != nil
 end
 
-def nums_between_min_max(minimum, maximum)
-  x = minimum.to_i
-  list = ''
-  while x < maximum.to_i
-    list += "#{x} "
+def find_key_in_list(key, list)
+  indx = -1
+  x = 0
+  # (0..list.length).each do |x|
+  while x <= list.length && indx == -1
+    if key == list[x]
+      indx = x
+    end
     x += 1
   end
-  list
+  indx
 end
 # -------------
 
 # LES ERREURS
 # -------------
 # if ARGV.length != 2 || !is_numeric(ARGV[0]) || !is_numeric(ARGV[1])
-if ARGV.length != 2 || !is_numeric(ARGV[0]) || !is_numeric(ARGV[1])
+if ARGV.length < 2
   puts 'error'
   exit
 end
@@ -30,17 +33,13 @@ end
 
 # LES DATA
 # -------------
-minimum = ARGV[0]
-maximum = ARGV[1]
+clef = ARGV.pop
+list = ARGV
 # -------------
 
 # LA RESOLUTION
 # -------------
-result = if minimum < maximum
-           nums_between_min_max(minimum, maximum)
-         else
-           nums_between_min_max(maximum, minimum)
-         end
+result = find_key_in_list(clef, list)
 # -------------
 
 # RESULTAT(S)
