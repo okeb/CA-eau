@@ -23,20 +23,25 @@ end
 # LES ERREURS
 # -------------
 if ARGV.length != 1
-  puts 'erreur'
+  puts 'error'
+  exit
+end
+
+if ARGV[0].match(/\A[+-]?\d+?(_?\d+)*(\.\d+e?\d*)?\Z/) != nil
+  puts 'error'
   exit
 end
 # -------------
 
 # LES DATA
 # -------------
-char = ARGV[0].tr("\r\n", '!')
+char = ARGV[0]
 # -------------
 
 # LA RESOLUTION
 # -------------
 result = []
-(0..char.length).each do |l|
+(0..(char.length - 1)).each do |l|
   if l.even?
     result.append(capitalize_step(char[l]))
   else
@@ -47,5 +52,5 @@ end
 
 # RESULTAT(S)
 # -------------
-puts result.join ''
+puts result.join('')
 # -------------

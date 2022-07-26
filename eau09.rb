@@ -10,9 +10,9 @@ end
 
 def nums_between_min_max(minimum, maximum)
   x = minimum.to_i
-  list = ''
+  list = []
   while x < maximum.to_i
-    list += "#{x} "
+    list.append(x.to_s)
     x += 1
   end
   list
@@ -45,5 +45,5 @@ result = if minimum < maximum
 
 # RESULTAT(S)
 # -------------
-puts result
+puts result.join ' '
 # -------------

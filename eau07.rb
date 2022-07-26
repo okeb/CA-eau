@@ -3,9 +3,12 @@
 
 # LES FONCTIONS
 # -------------
+def is_numeric char
+  char.match(/\A[+-]?\d+?(_?\d+)*(\.\d+e?\d*)?\Z/) != nil
+end
 def capitalize_step char
-  abc_small = "abcdefghijklmnopqrstuvwxyz"
-  abc_big   = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  abc_small = 'abcdefghijklmnopqrstuvwxyz'
+  abc_big   = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   not_found = true
   counter = 0
 
@@ -20,8 +23,8 @@ def capitalize_step char
 end
 
 def downcase_step char
-  abc_small = "abcdefghijklmnopqrstuvwxyz"
-  abc_big   = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  abc_small = 'abcdefghijklmnopqrstuvwxyz'
+  abc_big   = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   not_found = true
   counter = 0
 
@@ -39,7 +42,7 @@ end
 # LES ERREURS
 # -------------
 if ARGV.length != 1
-  puts 'erreur'
+  puts 'error'
   exit
 end
 # -------------
@@ -47,14 +50,15 @@ end
 # LES DATA
 # -------------
 # char = ARGV[0].tr("\r\n", '!')
-char = ARGV[0]
+char_cleaning = ARGV[0].sub("\n", ' ')
+char = char_cleaning.sub("\t", ' ')
 # -------------
 
 # LA RESOLUTION
 # -------------
 result = []
 (0..char.length).each do |l|
-  if l.zero? || (l.positive? && char[l - 1] == (' ' || '\t' || '\r\n'))
+  if l.zero? || (l.positive? && char[l - 1] == ' ')
     result.append(capitalize_step(char[l]))
   else
     result.append(downcase_step(char[l]))

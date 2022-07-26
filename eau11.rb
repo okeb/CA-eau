@@ -9,10 +9,12 @@ def is_numeric(char)
   !char.match(/\A[+-]?\d+?(_?\d+)*(\.\d+e?\d*)?\Z/).nil?
 end
 
+# @param [Array] list tableau des chiffres
+# @return [Integer] plus petite différence entre les nombres de la listes
 def return_min_diff_abs(list)
   idx_a = idx_b = x = 0
   mid_diff_abs = nil
-  last_idx = list.index(list[-1])
+  last_idx = list.length - 1
   while idx_a <= last_idx
     idx_b = idx_a + 1
     while idx_b <= last_idx

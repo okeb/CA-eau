@@ -10,16 +10,20 @@ def is_nbr_premier(number)
   (0..str_number.length).each do |x|
     somme += str_number[x].to_i
   end
-  true_class_false_class = (number.to_i > 5) && (number[-1].to_i == 5 || number[-1].to_i.zero?)
+  true_class_false_class = (number.to_i > 5) && (number.to_s[-1].to_i == 5 || number.to_s[-1].to_i.zero?)
   if (number.to_i > 2) && (number.to_i % 2).zero?
     false
-  elsif (number.to_i > 3) && (somme % 3).zero? && true_class_false_class
+  elsif (number.to_i > 3) && (somme % 3).zero? || true_class_false_class
     false
   else
     true
   end
 end
 
+# Renvoie le prochain nombre premier
+#
+# @param [String] x
+# @return [Integer]
 def next_nbr_premier(x)
   not_found = true
   y = x.to_i
