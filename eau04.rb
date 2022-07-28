@@ -15,6 +15,8 @@ def is_nbr_premier(number)
     false
   elsif (number.to_i > 3) && (somme % 3).zero? || true_class_false_class
     false
+  elsif (number.to_i > 7) && (number.to_i % 7).zero?
+    false
   else
     true
   end
